@@ -1,0 +1,48 @@
+= FastInstall
+:toc:
+:icons: font
+
+IMPORTANT: Since the program is currently under development, this program does not work.
+
+== Introduction
+=== What is FastInstall?
+Fast Install is an installer with which the developer of an application only has to send out a file configured by him and the installation works completely automatically everywhere afterwards. Optionally, the developer can also deliver the complete installation files and can automate the installation process via the program.
+
+== Installation
+[source, bash]
+--
+git clone https://github.com/ShortyPing/FastInstall
+cmake .
+make
+
+cd ./bin
+./FastInstall
+--
+
+== Usage
+[source, bash]
+--
+./FastInstall [-m | --manifest (Manifest File default manifest.fi)]
+--
+
+== Manifest Examples
+
+WARNING: FI_VERSION should be the same as the version of the installed FastInstall instance to avoid compatibility issues because we occasionally add or remove features
+
+=== Automatic Local Installation
+[source]
+--
+FI_VERSION=1;
+INSTALL_TYPE=DIR;
+INSTALL_DIR=./install;
+BUILD_CMD=cmake . && make;
+--
+
+=== Automatic Remote Installation
+[source]
+--
+FI_VERSION=1;
+INSTALL_TYPE=GIT;
+GIT_REMOTE_URL=https://github.com/ShortyPing/FastInstall;
+BUILD_CMD=cmake . && make;
+--
